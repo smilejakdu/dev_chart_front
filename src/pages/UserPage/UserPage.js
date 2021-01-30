@@ -1,8 +1,9 @@
 import React from 'react';
+import {UserPageBody} from './UserPage.style'
 
 const UserPage = ()=>{
     return (
-        <div>UserPage</div>
+        <UserPageBody>UserPage</UserPageBody>
     )
 }
 

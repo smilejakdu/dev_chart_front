@@ -1,8 +1,9 @@
 import React from 'react';
+import {ChartPageBody} from './ChartPage.style'
 
 const ChartPage = ()=>{
     return (
-        <div>ChartPage</div>
+        <ChartPageBody>ChartPage</ChartPageBody>
     )
 }
 

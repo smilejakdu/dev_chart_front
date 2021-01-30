@@ -1,8 +1,8 @@
 import React from 'react';
-
+import {ProgrammingPageBody} from './ProgrammingPage.style'
 const Programming = ()=>{
     return (
-        <div>Programming page</div>
+        <ProgrammingPageBody>Programming page</ProgrammingPageBody>
     )
 }
 
