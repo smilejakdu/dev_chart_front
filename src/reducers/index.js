@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
-// import search_input from "./search_input";
+import user from "./user";
 
 export default combineReducers({
+  user,
 });

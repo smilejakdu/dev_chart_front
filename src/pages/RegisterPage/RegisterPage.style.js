@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import palette from "../../util/styles/palette";
 
-const LoginPageBody = styled.div`
+const RegisterPageBody = styled.div`
   /* border: 1px solid red; */
   margin: 0 auto;
   margin-top: 10rem;
@@ -9,4 +9,4 @@ const LoginPageBody = styled.div`
   width: 80%;
 `;
 
-export { LoginPageBody };
+export { RegisterPageBody };

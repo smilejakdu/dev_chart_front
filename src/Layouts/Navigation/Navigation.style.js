@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import palette from '../../util/styles/palette';
-import { NavLink } from 'react-router-dom';
+import styled from "styled-components";
+import palette from "../../util/styles/palette";
+import { NavLink } from "react-router-dom";
 
 const CategoryLink = styled.div`
   position: relative;
@@ -28,6 +28,10 @@ const CategoryLink = styled.div`
     margin-right: 10px;
     right: 0;
   }
+
+  @media (max-width: 600px) {
+    overflow-x: scroll;
+  }
 `;
 
 const CategoryLinkItem = styled(NavLink)`
@@ -51,6 +55,39 @@ const CategoryLinkItem = styled(NavLink)`
   }
 `;
 
+const CategoryUserLinkItem = styled(NavLink)`
+  position: absolute;
+  right: 0;
+  padding: 6px 8px 6px 16px;
+  margin-right: 3px;
+  float: right;
+  text-decoration: none;
+  font-size: 25px;
+  color: ${palette.base_clor[3]};
+  display: block;
+  background: ${palette.base_clor[1]};
+  border: 1px solid ${palette.base_clor[1]};
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  &.active {
+    background: ${palette.base_clor[2]};
+    color: ${palette.base_clor[3]};
+  }
+  @media (max-width: 850px) {
+    font-size: 20px;
+  }
+  @media (max-width: 600px) {
+    position: relative;
+    display: flex;
+    font-size: 20px;
+  }
+`;
+
+const UserNickname = styled.div`
+  border: 1px solid red;
+`;
+
 const ImageLogo = styled.div`
   right: 0;
   top: 0;
@@ -62,4 +99,10 @@ const ImageLogo = styled.div`
   }
 `;
 
-export { CategoryLinkItem, CategoryLink, ImageLogo };
+export {
+  CategoryLinkItem,
+  CategoryLink,
+  ImageLogo,
+  UserNickname,
+  CategoryUserLinkItem,
+};

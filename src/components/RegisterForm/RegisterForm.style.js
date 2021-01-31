@@ -13,7 +13,7 @@ const InputForm = styled.div`
   padding-top: 60px;
   margin: 0 auto;
   align-items: center;
-  height: 450px;
+  height: 550px;
   width: 400px;
   border-radius: 15px;
   background: #f2f3f7;
@@ -69,7 +69,7 @@ const Input = styled.input`
   margin: 30px;
   &:hover {
     cursor: pointer;
-    border-bottom: 1px solid coral;
+    border-bottom: 1px solid ${palette.base_clor[0]};
   }
 `;
 

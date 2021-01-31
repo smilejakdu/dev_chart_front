@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import request from "../../util/request";
 import {
   Container,
@@ -7,43 +7,27 @@ import {
   Button,
   KaKaoBtn,
 } from "./LoginForm.style";
-import { Redirect } from "react-router-dom";
+import useInput from "../hooks/useInput";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { loginRequestAction } from "../../reducers/user";
 
-const LoginForm = (props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const LoginForm = () => {
+  const [email, onChangeEmail] = useInput("");
+  const [password, onChangePassword] = useInput("");
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      handleClick();
+      onSubmitForm();
     }
   };
 
-  const handleClick = () => {
-    request
-      .post("/user/signin", {
-        email: email,
-        password: password,
-      })
-      .then((res) => {
-        setEmail(email);
-        setPassword(password);
-
-        if (res.data || res) {
-          let {
-            data: { access },
-          } = res;
-          console.log(access);
-          localStorage.setItem("token", access);
-        }
-        props.history.push("/");
-      })
-      .catch((err) => {
-        console.log(err);
-        setEmail("");
-        setPassword("");
-      });
-  };
+  const onSubmitForm = useCallback(() => {
+    console.log(email, password);
+    dispatch(loginRequestAction({ email, password }));
+  }, [email, password]);
 
   return (
     <div>
@@ -57,7 +41,7 @@ const LoginForm = (props) => {
               placeholder="Email"
               name="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={onChangeEmail}
               onKeyPress={handleKeyPress}
               required
             />
@@ -68,14 +52,17 @@ const LoginForm = (props) => {
               placeholder="password"
               name="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={onChangePassword}
               onKeyPress={handleKeyPress}
               required
             />
           </div>
 
-          <Button type="button" onClick={handleClick}>
+          <Button type="button" onClick={onSubmitForm}>
             Login
+          </Button>
+          <Button type="button" onClick={() => history.push("/register")}>
+            Registesr
           </Button>
           <center>
             <KaKaoBtn />

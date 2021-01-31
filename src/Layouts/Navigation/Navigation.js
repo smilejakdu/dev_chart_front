@@ -1,6 +1,11 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { CategoryLinkItem, CategoryLink } from "./Navigation.style";
+import {
+  CategoryLinkItem,
+  CategoryUserLinkItem,
+  CategoryLink,
+} from "./Navigation.style";
+import { useDispatch, useSelector } from "react-redux";
 
 const categories = [
   {
@@ -13,10 +18,12 @@ const categories = [
   },
   {
     name: "user",
-    text: "User View",
+    text: "User",
   },
 ];
 const Navigation = () => {
+  const { me } = useSelector((state) => state.user);
+  console.log(me);
   // Header 부분
   return (
     <div>
@@ -32,6 +39,11 @@ const Navigation = () => {
         ))}
 
         <CategoryLinkItem to={"/login"}>Login</CategoryLinkItem>
+        {me && (
+          <CategoryUserLinkItem to={"/profile"}>
+            {me.nickname}
+          </CategoryUserLinkItem>
+        )}
       </CategoryLink>
     </div>
   );
