@@ -1,48 +1,89 @@
-import React, { useCallback, useEffect } from 'react';
-import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import useInput from '../hooks/useInput.js';
-// import { loginRequestAction } from '../reducers/user';
+import React, { useState, useEffect } from "react";
+import request from "../../util/request";
+import {
+  Container,
+  InputForm,
+  Input,
+  Button,
+  KaKaoBtn,
+} from "./LoginForm.style";
+import { Redirect } from "react-router-dom";
 
-// const ButtonWrapper = styled.div`
-//   margin-top: 10px;
-// `;
+const LoginForm = (props) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-// const FormWrapper = styled(form)`
-//   padding: 10px;
-// `;
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleClick();
+    }
+  };
 
-const LoginForm = () => {
-  const [email, onChangeEmail] = useInput('');
-  const [password, onChangePassword] = useInput('');
+  const handleClick = () => {
+    request
+      .post("/user/signin", {
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        setEmail(email);
+        setPassword(password);
 
-  const onSubmitForm = useCallback(() => {
-    console.log(email, password);
-    // dispatch(loginRequestAction({ email, password }));
-  }, [email, password]);
+        if (res.data || res) {
+          let {
+            data: { access },
+          } = res;
+          console.log(access);
+          localStorage.setItem("token", access);
+        }
+        props.history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        setEmail("");
+        setPassword("");
+      });
+  };
 
   return (
-    <form onFinish={onSubmitForm}>
-      <div>
-        <label htmlFor="user-email">이메일</label>
-        <br />
-        <input name="user-email" type="email" value={email} onChange={onChangeEmail} required />
-      </div>
-      <div>
-        <label htmlFor="user-password">비밀번호</label>
-        <br />
-        <input
-          name="user-password"
-          type="password"
-          value={password}
-          onChange={onChangePassword}
-          required
-        />
-      </div>
-      <div>
-        <div>login</div>
-      </div>
-    </form>
+    <div>
+      <div style={{ textAlign: "center" }}></div>
+      <Container>
+        <InputForm>
+          <h1>LOGIN</h1>
+          <div className="form-group">
+            <Input
+              type="text"
+              placeholder="Email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onKeyPress={handleKeyPress}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <Input
+              type="password"
+              placeholder="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyPress={handleKeyPress}
+              required
+            />
+          </div>
+
+          <Button type="button" onClick={handleClick}>
+            Login
+          </Button>
+          <center>
+            <KaKaoBtn />
+          </center>
+          {/* </form> */}
+        </InputForm>
+      </Container>
+    </div>
   );
 };
 

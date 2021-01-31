@@ -1,23 +1,23 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import { CategoryLinkItem, CategoryLink } from './Navigation.style';
+import React from "react";
+import { withRouter } from "react-router-dom";
+import { CategoryLinkItem, CategoryLink } from "./Navigation.style";
 
 const categories = [
   {
-    name: 'chart',
-    text: 'Chart',
+    name: "chart",
+    text: "Chart",
   },
   {
-    name: 'programming',
-    text: 'Programming',
+    name: "programming",
+    text: "Programming",
   },
   {
-    name: 'user',
-    text: 'User View',
+    name: "user",
+    text: "User View",
   },
 ];
 const Navigation = () => {
-  // Header 부분 
+  // Header 부분
   return (
     <div>
       <CategoryLink>
@@ -25,20 +25,13 @@ const Navigation = () => {
           <CategoryLinkItem
             key={c.name}
             exact={c.name}
-            to={
-              c.name === 'Login'
-                ? '/compoundinfo'
-                : `/${c.name}`
-            }
+            to={c.name === "Login" ? "/compoundinfo" : `/${c.name}`}
           >
             {c.text}
           </CategoryLinkItem>
         ))}
 
-        <CategoryLinkItem to={'/Login'}>
-          Login
-        </CategoryLinkItem>
-
+        <CategoryLinkItem to={"/login"}>Login</CategoryLinkItem>
       </CategoryLink>
     </div>
   );
