@@ -1,4 +1,4 @@
-import { all, call, fork, put, takeLatest } from "redux-saga/effects";
+import { all, call, fork, put, takeLatest, throttle } from "redux-saga/effects";
 import request from "../util/request";
 
 import {
@@ -11,6 +11,12 @@ import {
   SIGN_UP_FAILURE,
   SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS,
+  USER_LIST_REQUEST,
+  USER_LIST_SUCCESS,
+  USER_LIST_FAILURE,
+  CHANGE_NICKNAME_REQUEST,
+  CHANGE_NICKNAME_SUCCESS,
+  CHANGE_NICKNAME_FAILURE,
 } from "../reducers/user";
 
 function logInAPI(data) {
@@ -22,7 +28,7 @@ function* logIn(action) {
     console.log("sagas-logIn");
     const result = yield call(logInAPI, action.data);
     // yield delay(1000);
-    console.log(result);
+    localStorage.setItem("token", result.data.access);
     yield put({
       type: LOG_IN_SUCCESS,
       data: result.data,
@@ -37,7 +43,8 @@ function* logIn(action) {
 }
 
 function logOutAPI() {
-  return request.post("/user/logout");
+  return localStorage.removeItem("token");
+  // return request.post("/user/logout");
 }
 
 function* logOut() {
@@ -76,6 +83,27 @@ function* signUp(action) {
   }
 }
 
+function loadUserListAPI() {
+  return request.get(`/users/userlist`);
+}
+
+function* loadUserList() {
+  try {
+    const result = yield call(loadUserListAPI);
+    console.log("result : ", result);
+    yield put({
+      type: USER_LIST_SUCCESS,
+      data: result.data,
+    });
+  } catch (err) {
+    console.error(err);
+    yield put({
+      type: USER_LIST_FAILURE,
+      error: err.response.data,
+    });
+  }
+}
+
 function* watchLogIn() {
   yield takeLatest(LOG_IN_REQUEST, logIn);
 }
@@ -88,6 +116,15 @@ function* watchSignUp() {
   yield takeLatest(SIGN_UP_REQUEST, signUp);
 }
 
+function* watchLoadUserList() {
+  yield throttle(5000, USER_LIST_REQUEST, loadUserList);
+}
+
 export default function* userSaga() {
-  yield all([fork(watchLogIn), fork(watchLogOut), fork(watchSignUp)]);
+  yield all([
+    fork(watchLogIn),
+    fork(watchLogOut),
+    fork(watchSignUp),
+    fork(watchLoadUserList),
+  ]);
 }

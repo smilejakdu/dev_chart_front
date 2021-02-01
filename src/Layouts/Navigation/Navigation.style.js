@@ -55,6 +55,32 @@ const CategoryLinkItem = styled(NavLink)`
   }
 `;
 
+const LogoutBtnItem = styled.button`
+  padding: 6px 8px 6px 16px;
+  margin-right: 3px;
+  text-decoration: none;
+  font-size: 25px;
+  color: ${palette.base_clor[0]};
+  display: block;
+  background: ${palette.base_clor[1]};
+  border: 1px solid ${palette.base_clor[1]};
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  &:hover {
+    cursor: pointer;
+    color: coral;
+  }
+
+  &.active {
+    background: ${palette.base_clor[2]};
+    color: ${palette.base_clor[0]};
+  }
+  @media (max-width: 850px) {
+    font-size: 20px;
+  }
+`;
+
 const CategoryUserLinkItem = styled(NavLink)`
   position: absolute;
   right: 0;
@@ -105,4 +131,5 @@ export {
   ImageLogo,
   UserNickname,
   CategoryUserLinkItem,
+  LogoutBtnItem,
 };

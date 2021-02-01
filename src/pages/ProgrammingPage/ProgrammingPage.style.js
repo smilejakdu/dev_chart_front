@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import palette from '../../util/styles/palette';
+import styled from "styled-components";
+import palette from "../../util/styles/palette";
 
 const ProgrammingPageBody = styled.div`
-  border : 1px solid red;
+  border: 1px solid red;
   margin-top: 10rem;
   margin-right: auto;
   margin-left: auto;
@@ -10,4 +10,12 @@ const ProgrammingPageBody = styled.div`
   width: 80%;
 `;
 
-export  { ProgrammingPageBody};
+const ProgrammingPageTitle = styled.div`
+  border: 1px solid blue;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export { ProgrammingPageBody, ProgrammingPageTitle };

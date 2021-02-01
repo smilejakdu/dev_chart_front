@@ -5,11 +5,10 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import ProgrammingPage from "./pages/ProgrammingPage/ProgrammingPage";
 import UserPage from "./pages/UserPage/UserPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import Layout from "./Layouts/Layout";
 
 const App = () => {
-  // Routering 하기위한 Component
-
   return (
     <div>
       <Router>
@@ -24,6 +23,7 @@ const App = () => {
             <Route exact="exact" path="/user" component={UserPage} />
             <Route exact="exact" path="/login" component={LoginPage} />
             <Route exact="exact" path="/register" component={RegisterPage} />
+            <Route exact="exact" path="/profile" component={ProfilePage} />
             <Route
               render={({ location }) => (
                 <div>

@@ -10,11 +10,15 @@ export const initialState = {
   signUpLoading: false, // 회원가입 시도중
   signUpDone: false,
   signUpError: null,
+  userListLoading: false, // 유저 리스트 시도중
+  userListDone: false,
+  uesrListError: null,
   changeNicknameLoading: false, // 닉네임 변경 시도중
   changeNicknameDone: false,
   changeNicknameError: null,
   me: null,
   nickname: null,
+  userlist: [],
 };
 
 export const LOG_IN_REQUEST = "LOG_IN_REQUEST";
@@ -28,6 +32,10 @@ export const LOG_OUT_FAILURE = "LOG_OUT_FAILURE";
 export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
 export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
 export const SIGN_UP_FAILURE = "SIGN_UP_FAILURE";
+
+export const USER_LIST_REQUEST = "USER_LIST_REQUEST";
+export const USER_LIST_SUCCESS = "USER_LIST_SUCCESS";
+export const USER_LIST_FAILURE = "USER_LIST_FAILURE";
 
 export const CHANGE_NICKNAME_REQUEST = "CHANGE_NICKNAME_REQUEST";
 export const CHANGE_NICKNAME_SUCCESS = "CHANGE_NICKNAME_SUCCESS";
@@ -85,6 +93,20 @@ const reducer = (state = initialState, action) =>
       case SIGN_UP_FAILURE:
         draft.signUpLoading = false;
         draft.signUpError = action.error;
+        break;
+      case USER_LIST_REQUEST:
+        draft.userListLoading = true;
+        draft.userListError = null;
+        draft.userListDone = false;
+        break;
+      case USER_LIST_SUCCESS:
+        draft.userListLoading = false;
+        draft.userListDone = true;
+        draft.userlist = draft.userlist.concat(action.data);
+        break;
+      case USER_LIST_FAILURE:
+        draft.userListLoading = false;
+        draft.userListError = action.error;
         break;
       case CHANGE_NICKNAME_REQUEST:
         draft.changeNicknameLoading = true;

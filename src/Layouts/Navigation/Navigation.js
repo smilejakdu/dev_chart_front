@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import {
   CategoryLinkItem,
   CategoryUserLinkItem,
   CategoryLink,
+  LogoutBtnItem,
 } from "./Navigation.style";
 import { useDispatch, useSelector } from "react-redux";
-
+import { logoutRequestAction } from "../../reducers/user";
 const categories = [
   {
     name: "chart",
@@ -22,9 +23,15 @@ const categories = [
   },
 ];
 const Navigation = () => {
-  const { me } = useSelector((state) => state.user);
-  console.log(me);
+  const dispatch = useDispatch();
+  const { me, logInDone } = useSelector((state) => state.user);
+  console.log(logInDone);
   // Header 부분
+
+  const LogOutBtn = useCallback(() => {
+    dispatch(logoutRequestAction());
+  }, []);
+
   return (
     <div>
       <CategoryLink>
@@ -37,12 +44,12 @@ const Navigation = () => {
             {c.text}
           </CategoryLinkItem>
         ))}
-
-        <CategoryLinkItem to={"/login"}>Login</CategoryLinkItem>
-        {me && (
-          <CategoryUserLinkItem to={"/profile"}>
-            {me.nickname}
-          </CategoryUserLinkItem>
+        {localStorage.getItem("token") ? (
+          <LogoutBtnItem onClick={LogOutBtn}>Logout</LogoutBtnItem>
+        ) : (
+          <div>
+            <CategoryLinkItem to={"/login"}>Login</CategoryLinkItem>
+          </div>
         )}
       </CategoryLink>
     </div>
