@@ -31,39 +31,35 @@ const InputBorder = styled.div`
   }
 `;
 
-const InputCustom = styled.div`
-  margin-right: 20px;
-  label {
-    display: flex;
-    align-items: center;
+const CheckBoxBorder = styled.div`
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+`;
+
+const Button = styled.button`
+  color: ${palette.base_clor[0]};
+  background: ${palette.base_clor[2]};
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-top: 5rem;
+
+  &:hover {
     cursor: pointer;
-    height: 13px;
-
-    input {
-      display: none;
-    }
-
-    span {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 1px solid ${palette.base_clor[2]};
-      border-radius: 3px;
-      background: white;
-    }
-
-    input:checked ~ span {
-      background: ${palette.base_clor[0]};
-    }
-
-    h4 {
-      margin-left: 10px;
-    }
-    @media (max-width: 1100px) {
-      margin-bottom: 20px;
-      margin-top: 20px;
-    }
+    box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.2);
+    color: ${palette.base_clor[1]};
   }
 `;
 
-export { ProgrammingPageBody, ProgrammingPageTitle, InputCustom, InputBorder };
+const CheckBoxInput = styled.div`
+  margin-right: 10px;
+`;
+
+export {
+  ProgrammingPageBody,
+  ProgrammingPageTitle,
+  CheckBoxBorder,
+  Button,
+  CheckBoxInput,
+};

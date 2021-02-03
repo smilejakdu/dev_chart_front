@@ -1,10 +1,31 @@
-import React from 'react';
-import {ChartPageBody} from './ChartPage.style'
+import React, { useEffect } from "react";
+import { ChartPageBody, CircleBorder, BarBorder } from "./ChartPage.style";
+import BarChart from "../../components/BarChart/BarChart";
+import CircleChart from "../../components/CircleChart/CircleChart";
+import { useDispatch, useSelector } from "react-redux";
+import { CHART_DATA_REQUEST } from "../../reducers/chart";
 
-const ChartPage = ()=>{
-    return (
-        <ChartPageBody>ChartPage</ChartPageBody>
-    )
-}
+const ChartPage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log("useEffect1");
+    dispatch({
+      type: CHART_DATA_REQUEST,
+    });
+    console.log("useEffect2");
+  }, []);
+
+  return (
+    <ChartPageBody>
+      <CircleBorder>
+        <CircleChart />
+      </CircleBorder>
+      <BarBorder>
+        <BarChart />
+      </BarBorder>
+    </ChartPageBody>
+  );
+};
 
 export default ChartPage;

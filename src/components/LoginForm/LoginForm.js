@@ -27,6 +27,7 @@ const LoginForm = () => {
   const onSubmitForm = useCallback(() => {
     console.log(email, password);
     dispatch(loginRequestAction({ email, password }));
+    history.push("/chart");
   }, [email, password]);
 
   return (

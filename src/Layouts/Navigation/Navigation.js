@@ -8,6 +8,8 @@ import {
 } from "./Navigation.style";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutRequestAction } from "../../reducers/user";
+import { useHistory } from "react-router-dom";
+
 const categories = [
   {
     name: "chart",
@@ -23,13 +25,14 @@ const categories = [
   },
 ];
 const Navigation = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { me, logInDone } = useSelector((state) => state.user);
-  console.log(logInDone);
   // Header 부분
 
   const LogOutBtn = useCallback(() => {
     dispatch(logoutRequestAction());
+    history.push("/login");
   }, []);
 
   return (
@@ -44,7 +47,7 @@ const Navigation = () => {
             {c.text}
           </CategoryLinkItem>
         ))}
-        {localStorage.getItem("token") ? (
+        {localStorage.getItem("token") || me ? (
           <LogoutBtnItem onClick={LogOutBtn}>Logout</LogoutBtnItem>
         ) : (
           <div>

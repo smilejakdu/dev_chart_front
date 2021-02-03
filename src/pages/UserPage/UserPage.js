@@ -1,15 +1,15 @@
 import React from "react";
-import { UserPageBody, UserPageTitle, UserPageList } from "./UserPage.style";
+import { UserPageBody } from "./UserPage.style";
 import UserList from "../../components/UserList/UserList";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const UserPage = () => {
   return (
-    <UserPageBody>
-      <UserPageTitle>User List</UserPageTitle>
-      <UserPageList>
+    <div>
+      <UserPageBody>
         <UserList />
-      </UserPageList>
-    </UserPageBody>
+      </UserPageBody>
+    </div>
   );
 };
 

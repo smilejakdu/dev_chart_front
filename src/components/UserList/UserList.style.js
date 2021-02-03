@@ -1,26 +1,31 @@
 import styled from "styled-components";
 import palette from "../../util/styles/palette";
 
-const TableBorder = styled.div`
-  display: flex;
-  top: 0;
-`;
 const TableHeader = styled.thead`
-  font-size: 15px;
-  text-align: center;
   position: sticky;
+  top: 0;
+  background: ${palette.base_clor[2]};
+  color: white;
   th {
-    border: 1px solid ${palette.base_clor[2]};
+    font-size: 13.5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+    background: ${palette.base_clor[2]};
+    color: ${palette.base_clor[0]};
+    position: sticky;
+    top: 0;
   }
 `;
 
 const TableBody = styled.tbody`
-  font-size: 15px;
-  text-align: center;
-
   td {
-    border: 1px solid ${palette.base_clor[2]};
+    font-size: 13.5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid #e7e4de;
+    text-align: center;
   }
 `;
 
-export { TableHeader, TableBody, TableBorder };
+export { TableHeader, TableBody };

@@ -37,6 +37,10 @@ export const USER_LIST_REQUEST = "USER_LIST_REQUEST";
 export const USER_LIST_SUCCESS = "USER_LIST_SUCCESS";
 export const USER_LIST_FAILURE = "USER_LIST_FAILURE";
 
+export const PROGRAMMING_REQUEST = "USER_LIST_REQUEST";
+export const PROGRAMMING_SUCCESS = "PROGRAMMING_SUCCESS";
+export const PROGRAMMING_FAILURE = "PROGRAMMING_FAILURE";
+
 export const CHANGE_NICKNAME_REQUEST = "CHANGE_NICKNAME_REQUEST";
 export const CHANGE_NICKNAME_SUCCESS = "CHANGE_NICKNAME_SUCCESS";
 export const CHANGE_NICKNAME_FAILURE = "CHANGE_NICKNAME_FAILURE";
@@ -107,6 +111,20 @@ const reducer = (state = initialState, action) =>
       case USER_LIST_FAILURE:
         draft.userListLoading = false;
         draft.userListError = action.error;
+        break;
+      case PROGRAMMING_REQUEST:
+        draft.userListLoading = true;
+        draft.userListError = null;
+        draft.userListDone = false;
+        break;
+      case PROGRAMMING_SUCCESS:
+        draft.userListLoading = false;
+        draft.userListError = action.error;
+        break;
+      case PROGRAMMING_FAILURE:
+        draft.userListLoading = false;
+        draft.userListDone = true;
+        draft.userlist = draft.userlist.concat(action.data);
         break;
       case CHANGE_NICKNAME_REQUEST:
         draft.changeNicknameLoading = true;

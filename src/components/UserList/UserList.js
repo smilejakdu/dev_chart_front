@@ -3,6 +3,8 @@ import { TableHeader, TableBody, TableBorder } from "./UserList.style";
 import { useSelector, useDispatch } from "react-redux";
 import { USER_LIST_REQUEST } from "../../reducers/user";
 import request from "../../util/request";
+import { Table } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const UserList = () => {
   const [userList, setUserList] = useState([]);
@@ -47,12 +49,25 @@ const UserList = () => {
   //   }, [userListLoading, userlist]);
 
   return (
-    <TableBorder>
-      <table>
+    <div>
+      <Table>
         <TableHeader>
           <tr>
             <th>nickname</th>
             <th>date</th>
+            <th>python</th>
+            <th>javascript</th>
+            <th>java</th>
+            <th>c</th>
+            <th>c_plus</th>
+
+            <th>spring</th>
+            <th>django</th>
+            <th>flask</th>
+            <th>express</th>
+            <th>react</th>
+            <th>vue</th>
+            <th>laravel</th>
           </tr>
         </TableHeader>
         <TableBody>
@@ -60,11 +75,23 @@ const UserList = () => {
             <tr>
               <td>{user.nickname}</td>
               <td>{user.date}</td>
+              <td>{`${user.python}`}</td>
+              <td>{`${user.javascript}`}</td>
+              <td>{`${user.java}`}</td>
+              <td>{`${user.c}`}</td>
+              <td>{`${user.c_plus}`}</td>
+              <td>{`${user.spring}`}</td>
+              <td>{`${user.django}`}</td>
+              <td>{`${user.flask}`}</td>
+              <td>{`${user.express}`}</td>
+              <td>{`${user.react}`}</td>
+              <td>{`${user.vue}`}</td>
+              <td>{`${user.laravel}`}</td>
             </tr>
           ))}
         </TableBody>
-      </table>
-    </TableBorder>
+      </Table>
+    </div>
   );
 };
 

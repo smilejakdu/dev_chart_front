@@ -1,27 +1,142 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   ProgrammingPageBody,
   ProgrammingPageTitle,
-  InputCustom,
-  InputBorder,
+  CheckBoxBorder,
+  Button,
+  CheckBoxInput,
 } from "./ProgrammingPage.style";
+// import Checkbox from "../../components/Checkbox/Checkbox";
+import request from "../../util/request";
 
 const Programming = () => {
-  const [check, setCheck] = useState(false);
-  const handleCheckBoxChange = (e) => {
-    setCheck(e);
+  const [python, setPython] = useState(false);
+  const [javascript, setJavascript] = useState(false);
+  const [java, setJava] = useState(false);
+  const [php, setPhp] = useState(false);
+  const [c, setC] = useState(false);
+  const [c_plus, setC_plus] = useState(false);
+  const [spring, setSpring] = useState(false);
+  const [django, setDjango] = useState(false);
+  const [flask, setFlask] = useState(false);
+  const [express, setExpress] = useState(false);
+  const [react, setReact] = useState(false);
+  const [vue, setVue] = useState(false);
+  const [laravel, setLaravel] = useState(false);
+
+  const onHandleClick = () => {
+    request
+      .post(
+        "/users/programming",
+        {
+          python,
+          javascript,
+          java,
+          php,
+          c,
+          c_plus,
+          spring,
+          django,
+          flask,
+          express,
+          react,
+          vue,
+          laravel,
+        },
+        {
+          headers: { Authorization: `${localStorage.getItem("token")}` },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
-  const laguagesList = ["python", "javascript", "java", "php", "C", "C++"];
-  const frameworks = [
-    "spring",
-    "django",
-    "flask",
-    "express",
-    "react",
-    "vue",
-    "laravel",
-  ];
+  useEffect(() => {
+    request
+      .get("/users/programming", {
+        headers: { Authorization: `${localStorage.getItem("token")}` },
+      })
+      .then((res) => {
+        let {
+          data: { data },
+        } = res;
+        console.log(data);
+        console.log(data[0].php);
+        console.log(data[0].python);
+        setPython(data[0].python);
+        setJavascript(data[0].javascript);
+        setJava(data[0].java);
+        setPhp(data[0].php);
+        setC(data[0].c);
+        setC_plus(data[0].c_plus);
+        setSpring(data[0].spring);
+        setDjango(data[0].django);
+        setFlask(data[0].flask);
+        setExpress(data[0].express);
+        setReact(data[0].react);
+        setVue(data[0].vue);
+        setLaravel(data[0].laravel);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const onPythonClick = useCallback(() => {
+    setPython((e) => !e);
+  }, []);
+
+  const onJavaScriptClick = useCallback(() => {
+    setJavascript((e) => !e);
+  }, []);
+
+  const onJavaClick = useCallback(() => {
+    setJava((e) => !e);
+  }, []);
+
+  const onPhpClick = useCallback(() => {
+    setPhp((e) => !e);
+  }, []);
+
+  const onCClick = useCallback(() => {
+    setC((e) => !e);
+  }, []);
+
+  const onCPlusClick = useCallback(() => {
+    setC_plus((e) => !e);
+  }, []);
+
+  const onSpringClick = useCallback(() => {
+    setSpring((e) => !e);
+  }, []);
+
+  const onDjangoClick = useCallback(() => {
+    setDjango((e) => !e);
+  }, []);
+
+  const onFlaskClick = useCallback(() => {
+    setFlask((e) => !e);
+  }, []);
+
+  const onExpressClick = useCallback(() => {
+    setExpress((e) => !e);
+  }, []);
+
+  const onReactClick = useCallback(() => {
+    setReact((e) => !e);
+  }, []);
+
+  const onVueClick = useCallback(() => {
+    setVue((e) => !e);
+  }, []);
+
+  const onLaravelClick = useCallback(() => {
+    setLaravel((e) => !e);
+  }, []);
 
   return (
     <ProgrammingPageBody>
@@ -30,43 +145,80 @@ const Programming = () => {
           <ProgrammingPageTitle>
             사용하는 언어 와 프레임워크를 선택해 주세요.
           </ProgrammingPageTitle>
-
-          <InputBorder>
-            {laguagesList.map((laguages) => (
-              <div>
-                <InputCustom>
-                  <label>
-                    <input
-                      type="checkbox"
-                      onClick={(e) => {
-                        console.log(e.target.id);
-                      }}
-                    />
-                    <span className="customCheckBox" />
-                    <h4>{laguages}</h4>
-                  </label>
-                </InputCustom>
-              </div>
-            ))}
-          </InputBorder>
-          <InputBorder>
-            {frameworks.map((framework) => (
-              <div>
-                <InputCustom>
-                  <label>
-                    <input
-                      type="checkbox"
-                      onClick={(e) => {
-                        console.log(e.target.id);
-                      }}
-                    />
-                    <span className="customCheckBox" />
-                    <h4>{framework}</h4>
-                  </label>
-                </InputCustom>
-              </div>
-            ))}
-          </InputBorder>
+          <CheckBoxBorder>
+            <CheckBoxInput>
+              <input type="checkbox" checked={python} onClick={onPythonClick} />
+              <label htmlFor="">python</label>
+            </CheckBoxInput>
+            <CheckBoxInput>
+              <input
+                type="checkbox"
+                checked={javascript}
+                onClick={onJavaScriptClick}
+              />
+              <label htmlFor="">javascript</label>
+            </CheckBoxInput>
+            <CheckBoxInput>
+              <input type="checkbox" checked={java} onClick={onJavaClick} />
+              <label htmlFor="">java</label>
+            </CheckBoxInput>
+            <CheckBoxInput>
+              <input type="checkbox" checked={php} onClick={onPhpClick} />
+              <label htmlFor="">php</label>
+            </CheckBoxInput>
+            <CheckBoxInput>
+              <input type="checkbox" checked={c} onClick={onCClick} />
+              <label htmlFor="">c</label>
+            </CheckBoxInput>
+            <CheckBoxInput>
+              <input type="checkbox" checked={c_plus} onClick={onCPlusClick} />
+              <label htmlFor="">c_plus</label>
+            </CheckBoxInput>
+          </CheckBoxBorder>
+          <br />
+          <CheckBoxBorder>
+            <CheckBoxInput>
+              <input type="checkbox" checked={spring} onClick={onSpringClick} />
+              <label htmlFor="">spring</label>
+            </CheckBoxInput>
+            <CheckBoxInput>
+              <input type="checkbox" checked={django} onClick={onDjangoClick} />
+              <label htmlFor="">django</label>
+            </CheckBoxInput>
+            <CheckBoxInput>
+              <input type="checkbox" checked={flask} onClick={onFlaskClick} />
+              <label htmlFor="">flask</label>
+            </CheckBoxInput>
+            <CheckBoxInput>
+              <input
+                type="checkbox"
+                checked={express}
+                onClick={onExpressClick}
+              />
+              <label htmlFor="">express</label>
+            </CheckBoxInput>
+            <CheckBoxInput>
+              <input type="checkbox" checked={react} onClick={onReactClick} />
+              <label htmlFor="">react</label>
+            </CheckBoxInput>
+            <CheckBoxInput>
+              <input type="checkbox" checked={vue} onClick={onVueClick} />
+              <label htmlFor="">vue</label>
+            </CheckBoxInput>
+            <CheckBoxInput>
+              <input
+                type="checkbox"
+                checked={laravel}
+                onClick={onLaravelClick}
+              />
+              <label htmlFor="">laravel</label>
+            </CheckBoxInput>
+          </CheckBoxBorder>
+          <div>
+            <center>
+              <Button onClick={onHandleClick}>button</Button>
+            </center>
+          </div>
         </div>
       ) : (
         <ProgrammingPageTitle>로그인이 필요합니다.</ProgrammingPageTitle>
