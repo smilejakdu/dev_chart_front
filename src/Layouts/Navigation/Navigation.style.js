@@ -21,6 +21,7 @@ const CategoryLink = styled.div`
 
   a:hover {
     text-decoration: none;
+    transition: all 0.3s ease-out;
   }
 
   .logout {

@@ -41,6 +41,8 @@ const Button = styled.button`
     cursor: pointer;
     box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.2);
     color: coral;
+    transition: all 0.3s ease-out;
+    background: #f2f3f7;
   }
 `;
 

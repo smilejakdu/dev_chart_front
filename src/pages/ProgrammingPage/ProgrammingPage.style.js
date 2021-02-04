@@ -47,8 +47,10 @@ const Button = styled.button`
 
   &:hover {
     cursor: pointer;
+    transition: all 0.3s ease-out;
     box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.2);
     color: ${palette.base_clor[1]};
+    background: #f2f3f7;
   }
 `;
 
