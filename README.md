@@ -6,8 +6,14 @@ __Django REST API , Mysql , Modeling__
 pip install -r requirements.txt
 
 create database 
+
+
 python manage.py makemigrations
+
+
 python manage.py migrate
+
+
 python manage.py runserver
 
 # Front-end
@@ -16,4 +22,5 @@ python manage.py runserver
 __React js , React Hooks, Redux , Redux-saga__ 
 
 yarn install
+
 yarn start
