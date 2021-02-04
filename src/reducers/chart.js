@@ -3,6 +3,7 @@ import produce from "../util/produce";
 export const initialState = {
   chart_data: [],
   user_count: "",
+  python_user_count: "",
   chartDataLoading: false,
   chartDataDone: false,
   chartDataError: null,
@@ -31,10 +32,11 @@ const reducer = (state = initialState, action) =>
           data: { data },
         } = action;
         console.log(data[0]);
-        console.log(data[0].user_count);
+
+        draft.python_user_count = data[0].python_user_count;
         draft.user_count = data[0].user_count;
+        delete data[0].python_user_count;
         delete data[0].user_count;
-        console.log(data[0]);
         draft.chart_data = data[0];
         break;
       case CHART_DATA_FAILURE:
