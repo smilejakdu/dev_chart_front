@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { BarBorder } from "./BarChart.style";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const BarChart = ({ labels, bardata, bardata2 }) => {
   const { chart_data } = useSelector((state) => state.chart);

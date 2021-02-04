@@ -14,9 +14,6 @@ import {
   USER_LIST_REQUEST,
   USER_LIST_SUCCESS,
   USER_LIST_FAILURE,
-  PROGRAMMING_REQUEST,
-  PROGRAMMING_SUCCESS,
-  PROGRAMMING_FAILURE,
 } from "../reducers/user";
 
 function logInAPI(data) {
@@ -119,10 +116,6 @@ function* watchSignUp() {
 function* watchLoadUserList() {
   yield throttle(5000, USER_LIST_REQUEST, loadUserList);
 }
-
-// function* watchProgrammingList() {
-//   yield throttle(5000, USER_LIST_REQUEST, loadUserList);
-// }
 
 export default function* userSaga() {
   yield all([
