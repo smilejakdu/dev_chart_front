@@ -3,13 +3,17 @@ import {
   ProgrammingPageBody,
   ProgrammingPageTitle,
   CheckBoxBorder,
-  Button,
   CheckBoxInput,
+  ContainerSection,
+  ContainerCardInfo,
+  ContainerFeatures,
+  Button,
 } from "./ProgrammingPage.style";
-// import Checkbox from "../../components/Checkbox/Checkbox";
 import request from "../../util/request";
+import { Link } from "react-router-dom";
 
 const Programming = () => {
+  const [nickname, setNickname] = useState("");
   const [python, setPython] = useState(false);
   const [javascript, setJavascript] = useState(false);
   const [java, setJava] = useState(false);
@@ -67,6 +71,7 @@ const Programming = () => {
         console.log(data);
         console.log(data[0].php);
         console.log(data[0].python);
+        setNickname(data[0].nickname);
         setPython(data[0].python);
         setJavascript(data[0].javascript);
         setJava(data[0].java);
@@ -145,6 +150,9 @@ const Programming = () => {
           <ProgrammingPageTitle>
             사용하는 언어 와 프레임워크를 선택해 주세요.
           </ProgrammingPageTitle>
+          <center>
+            <div>{nickname}</div>
+          </center>
           <CheckBoxBorder>
             <CheckBoxInput>
               <input type="checkbox" checked={python} onClick={onPythonClick} />
@@ -216,9 +224,42 @@ const Programming = () => {
           </CheckBoxBorder>
           <div>
             <center>
-              <Button onClick={onHandleClick}>button</Button>
+              <Button onClick={onHandleClick}>Button</Button>
             </center>
           </div>
+          <ContainerSection>
+            <ContainerCardInfo>
+              <h3>React JS</h3>
+              <ContainerFeatures>
+                <li>JavaScript</li>
+                <li>Library</li>
+                <a href="https://ko.reactjs.org/tutorial/tutorial.html">
+                  go to React
+                </a>
+              </ContainerFeatures>
+              <button>Button</button>
+            </ContainerCardInfo>
+            <ContainerCardInfo>
+              <h3>Django</h3>
+              <ContainerFeatures>
+                <li>Python</li>
+                <li>Framework</li>
+                <a href="https://docs.djangoproject.com/ko/3.1/">
+                  go to Django
+                </a>
+              </ContainerFeatures>
+              <button>Button</button>
+            </ContainerCardInfo>
+            <ContainerCardInfo>
+              <h3>Express</h3>
+              <ContainerFeatures>
+                <li>JavaScript</li>
+                <li>Framework</li>
+                <a href="https://expressjs.com/ko/">go to Express</a>
+              </ContainerFeatures>
+              <button>Button</button>
+            </ContainerCardInfo>
+          </ContainerSection>
         </div>
       ) : (
         <ProgrammingPageTitle>로그인이 필요합니다.</ProgrammingPageTitle>

@@ -29,6 +29,7 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const { me, logInDone } = useSelector((state) => state.user);
   // Header 부분
+  console.log(me);
 
   const LogOutBtn = useCallback(() => {
     dispatch(logoutRequestAction());
@@ -42,13 +43,15 @@ const Navigation = () => {
           <CategoryLinkItem
             key={c.name}
             exact={c.name}
-            to={c.name === "Login" ? "/compoundinfo" : `/${c.name}`}
+            to={c.name === "login" ? "/chart" : `/${c.name}`}
           >
             {c.text}
           </CategoryLinkItem>
         ))}
         {localStorage.getItem("token") || me ? (
-          <LogoutBtnItem onClick={LogOutBtn}>Logout</LogoutBtnItem>
+          <div>
+            <LogoutBtnItem onClick={LogOutBtn}>Logout</LogoutBtnItem>
+          </div>
         ) : (
           <div>
             <CategoryLinkItem to={"/login"}>Login</CategoryLinkItem>

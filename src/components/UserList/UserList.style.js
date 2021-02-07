@@ -1,31 +1,41 @@
 import styled from "styled-components";
 import palette from "../../util/styles/palette";
 
-const TableHeader = styled.thead`
-  position: sticky;
-  top: 0;
-  background: ${palette.base_clor[2]};
-  color: white;
-  th {
-    font-size: 13.5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    text-align: center;
-    background: ${palette.base_clor[2]};
-    color: ${palette.base_clor[0]};
-    position: sticky;
-    top: 0;
+const Container = styled.div`
+  width: 1200px;
+  margin: 0px auto;
+  columns: 4;
+  column-gap: 10px;
+
+  @media (max-width: 1200px) {
+    width: 800px;
+    columns: 2;
   }
 `;
 
-const TableBody = styled.tbody`
-  td {
-    font-size: 13.5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    border: 1px solid #e7e4de;
-    text-align: center;
+const Box = styled.div`
+  width: 230px;
+  padding: 20px;
+  background: ${palette.base_clor[1]};
+  border: 1px solid gray;
+  margin-bottom: 10px;
+  break-inside: avoid;
+  border-radius: 10px;
+
+  h2 {
+    color: ${palette.base_clor[3]};
+  }
+
+  img {
+    width: 230px;
+    height: 150px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 1200px) {
+    width: 300px;
+    padding: 20px;
   }
 `;
 
-export { TableHeader, TableBody };
+export { Container, Box };

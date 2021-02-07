@@ -14,7 +14,7 @@ const App = () => {
       <Router>
         <Layout>
           <Switch>
-            <Route exact="exact" path="/chart" component={ChartPage} />
+            <Route exact="exact" path={["/chart", "/"]} component={ChartPage} />
             <Route
               exact="exact"
               path="/programming"

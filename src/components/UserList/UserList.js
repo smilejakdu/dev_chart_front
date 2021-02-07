@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { TableHeader, TableBody, TableBorder } from "./UserList.style";
+import { Container, Box } from "./UserList.style";
 import { useSelector, useDispatch } from "react-redux";
 import { USER_LIST_REQUEST } from "../../reducers/user";
 import request from "../../util/request";
@@ -8,9 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const UserList = () => {
   const [userList, setUserList] = useState([]);
-  const dispatch = useDispatch();
   const { userlist, userListLoading } = useSelector((state) => state.user);
-  console.log(userlist);
 
   useEffect(() => {
     request
@@ -49,49 +47,27 @@ const UserList = () => {
   //   }, [userListLoading, userlist]);
 
   return (
-    <div>
-      <Table>
-        <TableHeader>
-          <tr>
-            <th>nickname</th>
-            <th>date</th>
-            <th>python</th>
-            <th>javascript</th>
-            <th>java</th>
-            <th>c</th>
-            <th>c_plus</th>
-
-            <th>spring</th>
-            <th>django</th>
-            <th>flask</th>
-            <th>express</th>
-            <th>react</th>
-            <th>vue</th>
-            <th>laravel</th>
-          </tr>
-        </TableHeader>
-        <TableBody>
-          {userList.map((user) => (
-            <tr>
-              <td>{user.nickname}</td>
-              <td>{user.date}</td>
-              <td>{`${user.python}`}</td>
-              <td>{`${user.javascript}`}</td>
-              <td>{`${user.java}`}</td>
-              <td>{`${user.c}`}</td>
-              <td>{`${user.c_plus}`}</td>
-              <td>{`${user.spring}`}</td>
-              <td>{`${user.django}`}</td>
-              <td>{`${user.flask}`}</td>
-              <td>{`${user.express}`}</td>
-              <td>{`${user.react}`}</td>
-              <td>{`${user.vue}`}</td>
-              <td>{`${user.laravel}`}</td>
-            </tr>
-          ))}
-        </TableBody>
-      </Table>
-    </div>
+    <Container>
+      {userList.map((user) => (
+        <Box>
+          <h2>{user.nickname}</h2>
+          <p>
+            <div>{user.python ? <div>python</div> : <div></div>}</div>
+            <div>{user.javascript ? <div>javascript</div> : <div></div>}</div>
+            <div>{user.java ? <div>java</div> : <div></div>}</div>
+            <div>{user.c ? <div>c</div> : <div></div>}</div>
+            <div>{user.c_plus ? <div>c++</div> : <div></div>}</div>
+            <div>{user.spring ? <div>spring</div> : <div></div>}</div>
+            <div>{user.django ? <div>django</div> : <div></div>}</div>
+            <div>{user.flask ? <div>flask</div> : <div></div>}</div>
+            <div>{user.express ? <div>express</div> : <div></div>}</div>
+            <div>{user.react ? <div>react</div> : <div></div>}</div>
+            <div>{user.vue ? <div>vue</div> : <div></div>}</div>
+            <div>{user.laravel ? <div>laravel</div> : <div></div>}</div>
+          </p>
+        </Box>
+      ))}
+    </Container>
   );
 };
 

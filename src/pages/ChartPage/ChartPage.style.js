@@ -2,7 +2,6 @@ import styled from "styled-components";
 import palette from "../../util/styles/palette";
 
 const ChartPageBody = styled.div`
-  border: 1px solid ${palette.base_clor[0]};
   margin-top: 10rem;
   margin-right: auto;
   margin-left: auto;

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 const LoginPage = () => {
   const { me } = useSelector((state) => state.user);
+  console.log(me);
   return <LoginPageBody>{me ? "" : <LoginForm />}</LoginPageBody>;
 };
 

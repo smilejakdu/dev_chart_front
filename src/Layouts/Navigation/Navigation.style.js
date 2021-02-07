@@ -15,7 +15,7 @@ const CategoryLink = styled.div`
   min-width: 160px;
   position: fixed;
   background-color: white;
-  border-bottom: 1px solid ${palette.base_clor[1]};
+  border-bottom: 1px solid #0660e9;
   overflow-x: hidden;
   padding-top: 40px;
 
@@ -30,6 +30,11 @@ const CategoryLink = styled.div`
     right: 0;
   }
 
+  @media (max-width: 1000px) {
+    width: 800px;
+    columns: 2;
+  }
+
   @media (max-width: 600px) {
     overflow-x: scroll;
   }
@@ -40,16 +45,16 @@ const CategoryLinkItem = styled(NavLink)`
   margin-right: 3px;
   text-decoration: none;
   font-size: 25px;
-  color: ${palette.base_clor[0]};
+  color: white;
   display: block;
-  background: ${palette.base_clor[1]};
-  border: 1px solid ${palette.base_clor[1]};
+  background: linear-gradient(45deg, #0660e9 0%, #276afb 100%);
+  border: 1px solid #0660e9;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 
   &.active {
-    background: ${palette.base_clor[2]};
-    color: ${palette.base_clor[0]};
+    background: linear-gradient(45deg, #0660e9 0%, #276afb 100%);
+    color: black;
   }
   @media (max-width: 850px) {
     font-size: 20px;
@@ -61,10 +66,10 @@ const LogoutBtnItem = styled.button`
   margin-right: 3px;
   text-decoration: none;
   font-size: 25px;
-  color: ${palette.base_clor[0]};
+  color: coral;
   display: block;
-  background: ${palette.base_clor[1]};
-  border: 1px solid ${palette.base_clor[1]};
+  background: linear-gradient(45deg, #0660e9 0%, #276afb 100%);
+  border: 1px solid #0660e9;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 
@@ -74,7 +79,7 @@ const LogoutBtnItem = styled.button`
   }
 
   &.active {
-    background: ${palette.base_clor[2]};
+    background: linear-gradient(45deg, #0660e9 0%, #276afb 100%);
     color: ${palette.base_clor[0]};
   }
   @media (max-width: 850px) {
@@ -92,15 +97,16 @@ const CategoryUserLinkItem = styled(NavLink)`
   font-size: 25px;
   color: ${palette.base_clor[3]};
   display: block;
-  background: ${palette.base_clor[1]};
-  border: 1px solid ${palette.base_clor[1]};
+  background: linear-gradient(45deg, #0660e9 0%, #276afb 100%);
+  border: 1px solid #0660e9;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 
   &.active {
-    background: ${palette.base_clor[2]};
+    background: linear-gradient(45deg, #0660e9 0%, #276afb 100%);
     color: ${palette.base_clor[3]};
   }
+
   @media (max-width: 850px) {
     font-size: 20px;
   }
