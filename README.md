@@ -1,6 +1,6 @@
 # dev-Chart
 
-![screen](./util/image/main_chart.png)
+![screen](./src/util/image/main_chart.png)
 
 # Back-end
 
