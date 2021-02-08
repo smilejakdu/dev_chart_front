@@ -237,7 +237,6 @@ const Programming = () => {
                   go to React
                 </a>
               </ContainerFeatures>
-              <button>Button</button>
             </ContainerCardInfo>
             <ContainerCardInfo>
               <h3>Django</h3>
@@ -248,7 +247,6 @@ const Programming = () => {
                   go to Django
                 </a>
               </ContainerFeatures>
-              <button>Button</button>
             </ContainerCardInfo>
             <ContainerCardInfo>
               <h3>Express</h3>
@@ -257,7 +255,6 @@ const Programming = () => {
                 <li>Framework</li>
                 <a href="https://expressjs.com/ko/">go to Express</a>
               </ContainerFeatures>
-              <button>Button</button>
             </ContainerCardInfo>
           </ContainerSection>
         </div>

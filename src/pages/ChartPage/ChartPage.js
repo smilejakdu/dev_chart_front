@@ -13,7 +13,6 @@ const ChartPage = () => {
     dispatch({
       type: CHART_DATA_REQUEST,
     });
-    console.log("useEffect2");
   }, []);
 
   return (

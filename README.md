@@ -1,5 +1,7 @@
 # dev-Chart
 
+![screen](./util/image/main_chart.png)
+
 # Back-end
 
 ### Django

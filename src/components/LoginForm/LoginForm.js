@@ -64,9 +64,6 @@ const LoginForm = () => {
           <Button type="button" onClick={() => history.push("/register")}>
             Registesr
           </Button>
-          <center>
-            <KaKaoBtn />
-          </center>
           {/* </form> */}
         </InputForm>
       </Container>
