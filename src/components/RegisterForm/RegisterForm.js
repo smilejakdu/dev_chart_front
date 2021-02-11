@@ -111,9 +111,6 @@ const RegistesrForm = () => {
           <Button type="button" onClick={handleClick}>
             Register
           </Button>
-          <center>
-            <KaKaoBtn />
-          </center>
           {/* </form> */}
         </InputForm>
       </Container>

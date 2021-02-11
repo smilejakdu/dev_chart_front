@@ -6,6 +6,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import ProgrammingPage from "./pages/ProgrammingPage/ProgrammingPage";
 import UserPage from "./pages/UserPage/UserPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import BoardPage from "./pages/BoardPage/BoardPage";
 import Layout from "./Layouts/Layout";
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
             <Route exact="exact" path="/login" component={LoginPage} />
             <Route exact="exact" path="/register" component={RegisterPage} />
             <Route exact="exact" path="/profile" component={ProfilePage} />
+            <Route exact="exact" path="/board" component={BoardPage} />
             <Route
               render={({ location }) => (
                 <div>

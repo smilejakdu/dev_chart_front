@@ -61,6 +61,29 @@ const CategoryLinkItem = styled(NavLink)`
   }
 `;
 
+const CategoryLinkNicknameItem = styled(NavLink)`
+  position: absolute;
+  padding: 6px 8px 6px 16px;
+  margin-right: 3px;
+  text-decoration: none;
+  right: 0;
+  font-size: 25px;
+  color: white;
+  display: block;
+  background: linear-gradient(45deg, #0660e9 0%, #276afb 100%);
+  border: 1px solid #0660e9;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  &.active {
+    background: linear-gradient(45deg, #0660e9 0%, #276afb 100%);
+    color: black;
+  }
+  @media (max-width: 850px) {
+    font-size: 20px;
+  }
+`;
+
 const LogoutBtnItem = styled.button`
   padding: 6px 8px 6px 16px;
   margin-right: 3px;
@@ -138,5 +161,6 @@ export {
   ImageLogo,
   UserNickname,
   CategoryUserLinkItem,
+  CategoryLinkNicknameItem,
   LogoutBtnItem,
 };

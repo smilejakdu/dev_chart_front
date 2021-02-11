@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import {
   CategoryLinkItem,
-  CategoryUserLinkItem,
+  CategoryLinkNicknameItem,
   CategoryLink,
   LogoutBtnItem,
 } from "./Navigation.style";
@@ -29,7 +29,7 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const { me, logInDone } = useSelector((state) => state.user);
   // Header 부분
-  console.log(me);
+  console.log(me, logInDone);
 
   const LogOutBtn = useCallback(() => {
     dispatch(logoutRequestAction());
@@ -48,7 +48,7 @@ const Navigation = () => {
             {c.text}
           </CategoryLinkItem>
         ))}
-        {localStorage.getItem("token") || me ? (
+        {localStorage.getItem("token") ? (
           <div>
             <LogoutBtnItem onClick={LogOutBtn}>Logout</LogoutBtnItem>
           </div>
